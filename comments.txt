@@ -1,2 +1,11 @@
 change the name of the project:
     php artisan app:name blog
+
+php artisan route:list
+    show all routes
+
+--laravelcollective.com
+add "laravelcollective/html":"^5.3.0" to composer.json
+composer update in the directory
+add    (Collective\Html\HtmlServiceProvider::class,) to config/app.php
+
