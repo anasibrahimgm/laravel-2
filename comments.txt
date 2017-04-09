@@ -1,0 +1,2 @@
+change the name of the project:
+    php artisan app:name blog
