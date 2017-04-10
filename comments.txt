@@ -11,3 +11,5 @@ add    (Collective\Html\HtmlServiceProvider::class,) to config/app.php
 
 
 https://laravel.com/docs/5.4/validation
+
+http://parsleyjs.org/doc/index.html
