@@ -13,3 +13,7 @@ add    (Collective\Html\HtmlServiceProvider::class,) to config/app.php
 https://laravel.com/docs/5.4/validation
 
 http://parsleyjs.org/doc/index.html
+
+13.
+	//Session::flash('key', 'value') : only exists for one page request
+    //Session::put : exists untill the session is removes
