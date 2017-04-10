@@ -9,3 +9,5 @@ add "laravelcollective/html":"^5.3.0" to composer.json
 composer update in the directory
 add    (Collective\Html\HtmlServiceProvider::class,) to config/app.php
 
+
+https://laravel.com/docs/5.4/validation
