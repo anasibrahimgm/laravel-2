@@ -3,8 +3,7 @@
 
   <head>
     @include('partials._head')
-
-    @yield('stylesheets')
+    
   </head>
 
   <body>
@@ -22,7 +21,7 @@
 
       @include('partials._javascript')
 
-      @yield('scripts')    
+      @yield('scripts')
 
   </body>
 
