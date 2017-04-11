@@ -17,3 +17,6 @@ http://parsleyjs.org/doc/index.html
 13.
 	//Session::flash('key', 'value') : only exists for one page request
     //Session::put : exists untill the session is removes
+
+14.
+	{!! !!} is used not to echo out the data
