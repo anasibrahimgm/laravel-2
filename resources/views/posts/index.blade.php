@@ -39,7 +39,7 @@
         </table>
         <div class="text-center">
           {!! $posts->links(); !!}
-          <p>Page {!! $posts->currentPage() !!} of {!! $posts->total() !!}</p>
+          <p>Page {!! $posts->currentPage() !!} of {!! $posts->lastPage() !!}</p>
         </div>
       </div>
     </div>
