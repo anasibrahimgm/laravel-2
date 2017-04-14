@@ -3,11 +3,12 @@
 namespace blog\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use blog\Post;
 class PagesController extends Controller
 {
 	public function getIndex() {
-		return view('pages.welcome');
+		$posts = Post::orderBy('created_at', 'desc')->limit(4)->get();  // don't have to use DB::table() because we made the Post model
+		return view('pages.welcome')->withPosts($posts);
 
 	}
 
