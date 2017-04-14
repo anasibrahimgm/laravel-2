@@ -39,6 +39,7 @@
         </table>
         <div class="text-center">
           {!! $posts->links(); !!}
+          <p>Page {!! $posts->currentPage() !!} of {!! $posts->total() !!}</p>
         </div>
       </div>
     </div>
