@@ -40,4 +40,4 @@ http://parsleyjs.org/doc/index.html
 24.
   using double quotation here is like a MUST
 
-  
+  the 'route' fn. automatically generates the url
