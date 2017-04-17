@@ -45,7 +45,10 @@ class PostController extends Controller
         //validate the data
         $this->validate($request, array(
             'title' => 'required|max:255',
-            'body' => 'required'
+            'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
+            //alpha_dash: alpha-numeric characters, as well as dashes and underscores
+            //go to the slug column in posts table and see if this item is unique
+            'body' => 'required',
             ));
 
         //store in the db
@@ -53,6 +56,7 @@ class PostController extends Controller
 
         $post->title = $request->title;
         $post->body = $request->body;
+        $post->slug = $request->slug;
 
         $post->save();//save to the db
 
@@ -104,6 +108,7 @@ class PostController extends Controller
         //Validate the data
         $this->validate($request, array(
             'title' => 'required|max:255',
+            'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
             'body' => 'required'
             ));
 
@@ -111,6 +116,7 @@ class PostController extends Controller
         $post = Post::find($id);//find the post with this $id
 
         $post->title = $request->input('title');
+        $post->slug = $request->input('slug');
         $post->body = $request->input('body');
         $post->save();
 

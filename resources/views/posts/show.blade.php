@@ -14,15 +14,22 @@
 		<div class="col-md-4">
 			<div class="well">
 				<dl class="dl-horizontal">
-					<dt>Created At:</dt>
-					<dd>{{ date('M j, Y h:i a', strtotime($post->created_at)) }}</dd>
+					<label>Url Slug:</label>
+					<br />
+					<p><a href="{{ url($post->slug) }}">{{ url($post->slug) }}</a></p>
 				</dl>
 
 				<dl class="dl-horizontal">
-					<dt>Last Updated:</dt>
-					<dd>{{ date('M j, Y h:i a', strtotime($post->updated_at)) }}</dd>
+					<label>Created At:</label>
+					<p>{{ date('M j, Y h:i a', strtotime($post->created_at)) }}</p>
+				</dl>
+
+				<dl class="dl-horizontal">
+					<label>Last Updated:</label>
+					<p>{{ date('M j, Y h:i a', strtotime($post->updated_at)) }}</p>
 				</dl>
 				<hr />
+
 				<div class="row">
 					<div class="col-sm-6">
 						{!! Html::linkRoute('posts.edit', 'Edit', array($post->id), array('class' => 'btn btn-primary btn-block') ) !!}
