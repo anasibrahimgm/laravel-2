@@ -36,3 +36,8 @@ http://parsleyjs.org/doc/index.html
 23.
   Ctrl + D : highlight instances once at a time
   Alt + F3 : highlight all instances
+
+24.
+  using double quotation here is like a MUST
+
+  

@@ -16,7 +16,8 @@
 				<dl class="dl-horizontal">
 					<label>Url Slug:</label>
 					<br />
-					<p><a href="{{ url($post->slug) }}">{{ url($post->slug) }}</a></p>
+					<p><a href="{{ route('blog.single', $post->slug) }}">{{ url('blog/' . $post->slug) }}</a></p>
+					// the 'route' fn. automatically generates the url
 				</dl>
 
 				<dl class="dl-horizontal">
