@@ -23,3 +23,11 @@ http://parsleyjs.org/doc/index.html
 
 16.
   @endsection and @stop work exactly the same at this point in laravel
+22.
+  php artisan make:migration add_slug_to_posts
+
+  add "doctrine/dbal": "*" to composer.json
+  then composer update
+
+  php artisan migrate:rollback >> undoes the last migration
+  php artisan migrate:refresh >> undoes the whole migration and redoes it again
