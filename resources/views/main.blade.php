@@ -3,7 +3,7 @@
 
   <head>
     @include('partials._head')
-    
+
   </head>
 
   <body>
