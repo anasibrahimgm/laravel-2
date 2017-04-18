@@ -13,6 +13,10 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');//only authenticated users can access this page
+    }
     public function index()
     {
         //create a variable and store all the blog posts in it from the db
