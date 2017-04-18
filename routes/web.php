@@ -23,7 +23,7 @@
 */
 
 Route::group(['middleware' => 'web'], function() {
-	/*
+
 	// Authentication Routes
 	Route::get('auth/login', 'Auth\LoginController@getLogin');
 	Route::post('auth/login', 'Auth\LoginController@postLogin');
@@ -32,7 +32,6 @@ Route::group(['middleware' => 'web'], function() {
 	// Registeration Routes
 	Route::get('auth/logout', 'Auth\RegisterController@getRegister');
 	Route::post('auth/logout', 'Auth\RegisterController@postRegister');
-	*/
 
 	//domain.app/blog/slug-goes-here
 	Route::get('blog/{slug}', ['as' =>  'blog.single', 'uses' => 'BlogController@getSingle'])->where('slug', '[\w\d\-\_]+');//any word-any number-dash-underscore "+": any number of them
@@ -44,3 +43,7 @@ Route::group(['middleware' => 'web'], function() {
 
 	Route::resource('/posts','PostController');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
