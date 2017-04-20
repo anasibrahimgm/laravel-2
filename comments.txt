@@ -45,3 +45,12 @@ http://parsleyjs.org/doc/index.html
 24.5:
   if the slug didn't change when the post is edited, don't validate the slug
   else validate it
+
+30.password reset email
+  //change thse lines in '.env'
+  MAIL_DRIVER=smtp
+  MAIL_HOST=smtp.mailtrap.io
+  MAIL_PORT=2525
+  MAIL_USERNAME=58fdf154cc8b06
+  MAIL_PASSWORD=fcec26800255c6
+  MAIL_ENCRYPTION=tls
