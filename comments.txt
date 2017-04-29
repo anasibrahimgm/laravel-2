@@ -54,3 +54,9 @@ http://parsleyjs.org/doc/index.html
   MAIL_USERNAME=58fdf154cc8b06
   MAIL_PASSWORD=fcec26800255c6
   MAIL_ENCRYPTION=tls
+
+31.
+  php artisan make:model Category
+  php artisan make:migration create_categoriess_table --create=categories //creates "categories" table
+  php artisan make:migration add_category_id_to_posts --table=posts
+  php artisan migrate
