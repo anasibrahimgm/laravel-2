@@ -60,3 +60,7 @@ http://parsleyjs.org/doc/index.html
   php artisan make:migration create_categoriess_table --create=categories //creates "categories" table
   php artisan make:migration add_category_id_to_posts --table=posts
   php artisan migrate
+
+  $post->category->name in single.blade.php
+  // category bc we have the "category" method in Post.php
+  // we can also grab any thing from 'categories' table using this
