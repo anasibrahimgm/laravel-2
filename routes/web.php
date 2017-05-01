@@ -42,6 +42,12 @@ Route::group(['middleware' => 'web'], function() {
 	Route::get('/', 'PagesController@getIndex');
 
 	Route::resource('/posts','PostController');
+
+	// Categories
+	Route::resource('categories', 'CategoryController', ['except' => ['create'] ]);
+	// or ['only' => ['index', 'store'] ]
+
+
 });
 
 Auth::routes();

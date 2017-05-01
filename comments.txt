@@ -64,3 +64,7 @@ http://parsleyjs.org/doc/index.html
   $post->category->name in single.blade.php
   // category bc we have the "category" method in Post.php
   // we can also grab any thing from 'categories' table using this
+
+32.
+  php artisan make:controller CategoryController --resource
+  //CRUD controller
