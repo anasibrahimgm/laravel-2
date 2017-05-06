@@ -5,6 +5,7 @@ namespace blog\Http\Controllers;
 use Illuminate\Http\Request;
 use blog\Post;
 use Session;
+use blog\Category;
 
 class PostController extends Controller
 {
@@ -33,8 +34,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
-        return view('posts.create');
+        // grab all categories and send them to
+        // the form to be able to choose from them
+        $categories = Category::all();
+        return view('posts.create')->withCategories($categories);
 
     }
 
@@ -61,6 +64,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->body = $request->body;
         $post->slug = $request->slug;
+        $post->category_id = $request->category_id;
 
         $post->save();//save to the db
 
@@ -95,9 +99,15 @@ class PostController extends Controller
     {
         //find the post in the db and save as a variable
         $post = Post::find($id);//find a post by the id no.
+        $categories = Category::all();
+        //another way to show categories
+        $cats = [];
+        foreach ($categories as $category) {
+          $cats[$category->id] = $category->name;
+        }
 
         //return the view and pass in the var previously created
-        return view('posts.edit')->withPost($post);//posts.edit means posts/edit.blade.php
+        return view('posts.edit')->withPost($post)->withCategories($cats);//posts.edit means posts/edit.blade.php
     }
 
     /**
@@ -130,6 +140,7 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->slug = $request->input('slug');
         $post->body = $request->input('body');
+        $post->category_id = $request->input('category_id');
         $post->save();
 
         //set flash data with success msg.

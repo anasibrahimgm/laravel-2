@@ -13,7 +13,9 @@
 
       {{ Form::label('slug', 'Slug:') }}
       {{ Form::text('slug', null, ['class' => 'form-control']) }}
-      <br />
+
+      {{ Form::label('category_id', 'Category:') }}
+      {{ Form::select('category_id', $categories, null, ['class' => 'form-control']) }}
 
       {{ Form::label('body', 'Body:')}}
       {{ Form::textarea('body', null, ['class' => 'form-control'] ) }}
