@@ -68,3 +68,9 @@ http://parsleyjs.org/doc/index.html
 32.
   php artisan make:controller CategoryController --resource
   //CRUD controller
+
+34.
+  Laravel expects the name of two models in alphabetical oder 'post_tag'
+  //in TagController:
+    belongsToMany('blog\Post', 'post_tag', 'tag_id', 'post_id');
+    belongsToMany(ModelToLink, IntermediaryTable, ColumnNameForTheCurrentModel, ColumnNameForTheJoiningModel);
