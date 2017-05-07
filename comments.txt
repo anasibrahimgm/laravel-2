@@ -81,3 +81,7 @@ http://parsleyjs.org/doc/index.html
 
   php artisan make:migration create_post_tag_table
   php artisan migrate
+
+36.
+  php artisan make:controller TagController --resource
+  
