@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use blog\Post;
 use Session;
 use blog\Category;
+use blog\Tag;
 
 class PostController extends Controller
 {
@@ -18,6 +19,7 @@ class PostController extends Controller
     {
         $this->middleware('auth');//only authenticated users can access this page
     }
+
     public function index()
     {
         //create a variable and store all the blog posts in it from the db
@@ -37,7 +39,8 @@ class PostController extends Controller
         // grab all categories and send them to
         // the form to be able to choose from them
         $categories = Category::all();
-        return view('posts.create')->withCategories($categories);
+        $tags = Tag::all();
+        return view('posts.create')->withCategories($categories)->withTags($tags);
 
     }
 
@@ -49,6 +52,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);// die and dump
         //validate the data
         $this->validate($request, array(
             'title' => 'required|max:255',
@@ -67,6 +71,9 @@ class PostController extends Controller
         $post->category_id = $request->category_id;
 
         $post->save();//save to the db
+
+        $post->tags()->sync($request->tags, false);
+        // false : don't overwrite existing associations
 
         Session::flash('success', 'the Blog post is successfully saved!');
 
@@ -106,8 +113,14 @@ class PostController extends Controller
           $cats[$category->id] = $category->name;
         }
 
+        $tags = Tag::all();
+        $tags2 = [];
+        foreach ($tags as $tag){
+          $tags2[$tag->id] = $tag->name;
+        }
+
         //return the view and pass in the var previously created
-        return view('posts.edit')->withPost($post)->withCategories($cats);//posts.edit means posts/edit.blade.php
+        return view('posts.edit')->withPost($post)->withCategories($cats)->withTags($tags2);//posts.edit means posts/edit.blade.php
     }
 
     /**
@@ -142,6 +155,14 @@ class PostController extends Controller
         $post->body = $request->input('body');
         $post->category_id = $request->input('category_id');
         $post->save();
+
+        if (isset($request->tags)){
+          $post->tags()->sync($request->tags);
+          // is is true by default
+        } else {
+          $post->tags()->sync(array());
+        }
+
 
         //set flash data with success msg.
         Session::flash('success', 'the Blog post is successfully Updated!');

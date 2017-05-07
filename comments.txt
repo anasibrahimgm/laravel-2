@@ -84,4 +84,14 @@ http://parsleyjs.org/doc/index.html
 
 36.
   php artisan make:controller TagController --resource
-  
+
+37.
+  https://select2.github.io/examples.html
+  https://github.com/select2/select2
+
+  https://select2.github.io/examples.html#programmatic
+
+  add
+   $('.select2-multi').select2().val({!! json_encode($post->tags()->getRelatedIds()) !!}).trigger('change');
+   in posts.edit
+    //Call to undefined method Illuminate\Database\Query\Builder::getRelatedIds() (View: /home/vagrant/Code/blog/resources/views/posts/edit.blade.php)
