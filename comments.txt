@@ -74,3 +74,10 @@ http://parsleyjs.org/doc/index.html
   //in TagController:
     belongsToMany('blog\Post', 'post_tag', 'tag_id', 'post_id');
     belongsToMany(ModelToLink, IntermediaryTable, ColumnNameForTheCurrentModel, ColumnNameForTheJoiningModel);
+
+35.
+  php artisan make:model Tag --migration
+  php artisan migrate
+
+  php artisan make:migration create_post_tag_table
+  php artisan migrate

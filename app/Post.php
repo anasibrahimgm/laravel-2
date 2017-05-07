@@ -10,4 +10,9 @@ class Post extends Model
     {
       return $this->belongsTo('blog\Category');
     }
+
+    public function tags()
+    {
+      return $this->belongsToMany('blog\Tag');
+    }
 }
