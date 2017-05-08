@@ -52,7 +52,8 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        //
+        $tag = Tag::find($id);
+        return view('tags.show')->withTag($tag);
     }
 
     /**
@@ -63,7 +64,8 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        //
+      $tag = Tag::find($id);
+      return view('tags.edit')->withTag($tag);
     }
 
     /**
@@ -75,7 +77,17 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $this->validate($request,[
+        'name' => 'required| max:255| unique:tags,name'
+      ]);
+
+      $tag = Tag::find($id);
+      $tag->name = $request->name;
+      $tag->save();
+
+      Session::flash('success', 'Tag Is Successfully Updated');
+
+      return redirect()->route('tags.show', $tag->id);
     }
 
     /**

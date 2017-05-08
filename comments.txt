@@ -95,3 +95,7 @@ http://parsleyjs.org/doc/index.html
    $('.select2-multi').select2().val({!! json_encode($post->tags()->getRelatedIds()) !!}).trigger('change');
    in posts.edit
     //Call to undefined method Illuminate\Database\Query\Builder::getRelatedIds() (View: /home/vagrant/Code/blog/resources/views/posts/edit.blade.php)
+
+38.
+  '| $tag->name tag' ----> | $tag->name tag
+  "| $tag->name tag" ----> (real tag name)
