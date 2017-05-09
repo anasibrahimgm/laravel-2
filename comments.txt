@@ -99,3 +99,9 @@ http://parsleyjs.org/doc/index.html
 38.
   '| $tag->name tag' ----> | $tag->name tag
   "| $tag->name tag" ----> (real tag name)
+
+41.
+  php artisan make:model Comment --migration
+  php artisan migrate
+
+  php artisan make:controller CommentsController --resource
