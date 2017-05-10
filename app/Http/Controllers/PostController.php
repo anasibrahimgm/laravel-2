@@ -8,6 +8,7 @@ use Session;
 use blog\Category;
 use blog\Tag;
 use Purifier;
+use Image;
 
 class PostController extends Controller
 {
@@ -70,6 +71,15 @@ class PostController extends Controller
         $post->body = Purifier::clean($request->body);
         $post->slug = $request->slug;
         $post->category_id = $request->category_id;
+
+        if ($request->hasFile('featured_image')) {
+          $image = $request->file('featured_image');
+          $fileName = time() . '.' . $image->getClientOriginalExtension();// we can use  $image->encode('png');
+          $location = public_path('images/'. $fileName);// storage_path
+          Image::make($image)->resize(800, 400)->save($location);
+
+          $post->image = $fileName;
+        }
 
         $post->save();//save to the db
 

@@ -122,4 +122,14 @@ http://parsleyjs.org/doc/index.html
   composer require mews/purifier
   https://github.com/mewebstudio/purifier
   php artisan vendor:publish --provider="Mews\Purifier\PurifierServiceProvider"
-  
+
+46.
+  image.intervention.io
+  composer require intervention/image
+
+  php artisan make:migration add_image_col_to_posts --table=posts
+  php artisan migrate
+
+  asset() gives us the public url to the 'public folder'
+
+  livecoding.tv/jacurtis
