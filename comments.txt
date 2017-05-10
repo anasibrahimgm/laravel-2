@@ -105,3 +105,13 @@ http://parsleyjs.org/doc/index.html
   php artisan migrate
 
   php artisan make:controller CommentsController --resource
+
+43.
+  https://www.tinymce.com
+
+  menubar:false
+
+  we can customize the menu
+    menu: {
+      view: {title: Edit, item: 'cut, copy, paste'}
+    }
