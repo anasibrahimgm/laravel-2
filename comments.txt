@@ -117,4 +117,9 @@ http://parsleyjs.org/doc/index.html
     }
 44.
   when we show the posts from the db , we get the html code of the input data by the editor
+
+45.
+  composer require mews/purifier
+  https://github.com/mewebstudio/purifier
+  php artisan vendor:publish --provider="Mews\Purifier\PurifierServiceProvider"
   
