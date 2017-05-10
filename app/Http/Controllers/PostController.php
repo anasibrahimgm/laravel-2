@@ -9,6 +9,7 @@ use blog\Category;
 use blog\Tag;
 use Purifier;
 use Image;
+use Storage;
 
 class PostController extends Controller
 {
@@ -62,6 +63,7 @@ class PostController extends Controller
             //alpha_dash: alpha-numeric characters, as well as dashes and underscores
             //go to the slug column in posts table and see if this item is unique
             'body' => 'required',
+            'featured_image' => 'sometimes|image'
             ));
 
         //store in the db
@@ -146,25 +148,36 @@ class PostController extends Controller
         //Validate the data
         $post = Post::find($id);//find the post with this $id
 
-        if ( $request->input('slug') == $post->slug ){
-          $this->validate($request, array(
-              'title' => 'required|max:255',
-              'body' => 'required'
-              ));
-        }
-        else {
         $this->validate($request, array(
             'title' => 'required|max:255',
-            'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
-            'body' => 'required'
+            'slug' => "required|alpha_dash|min:5|max:255|unique:posts,slug,$id",
+            'body' => 'required',
+            'featured_image' => 'sometimes|image'
             ));
-          }
 
         //save the data to the db
         $post->title = $request->input('title');
         $post->slug = $request->input('slug');
         $post->body = Purifier::clean($request->input('body'));
         $post->category_id = $request->input('category_id');
+
+        if ($request->hasFile('featured_image')) {
+
+          // add the new photo
+          $image = $request->file('featured_image');
+          $fileName = time() . '.' . $image->getClientOriginalExtension();// we can use  $image->encode('png');
+          $location = public_path('images/'. $fileName);// storage_path
+          Image::make($image)->resize(800, 400)->save($location);
+
+          $old_fileName = $post->image;
+
+          // update the db
+          $post->image = $fileName;
+
+          // delete the old photo
+          Storage::delete($old_fileName);
+        }
+
         $post->save();
 
         if (isset($request->tags)){
@@ -194,6 +207,7 @@ class PostController extends Controller
         //
         $post = Post::find($id);
         $post->tags()->detach();
+        Storage::delete($post->image);
 
         $post->delete();
         Session::flash('success', 'the Blog post is successfully Deleted!');

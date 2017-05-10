@@ -6,6 +6,10 @@
 
 	<div class="row">
 		<div class="col-md-8">
+			<?php $link = asset('images/'. $post->image);
+			if ($post->image)
+			echo '<img src="'.$link.'" height="400" width="700"/>';
+			?>
 			<h1>{{ $post->title }}</h1>
 
 			<p class="lead">{!! $post->body !!}</p>
