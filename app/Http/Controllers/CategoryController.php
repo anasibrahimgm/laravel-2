@@ -39,7 +39,7 @@ class CategoryController extends Controller
     {
         // save a new category and redirect back to index
         $this->validate($request, [
-          'name' => 'required|max:255|unique:categories,name'
+          'name' => 'required|max:255|unique:blog_categories,name'
         ]);
 
         $category = new Category;

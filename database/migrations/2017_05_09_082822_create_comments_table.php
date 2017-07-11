@@ -13,7 +13,7 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('blog_comments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('email');
@@ -23,7 +23,7 @@ class CreateCommentsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('comments', function ($table){
+        Schema::table('blog_comments', function ($table){
           $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
           //if sb deletes the posts it will cascade and delete the reference//instead of the derach method
         });
@@ -37,6 +37,6 @@ class CreateCommentsTable extends Migration
     public function down()
     {
         Schema::dropForeign(['post_id']);
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('blog_comments');
     }
 }

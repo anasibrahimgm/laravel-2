@@ -59,7 +59,7 @@ class PostController extends Controller
         //validate the data
         $this->validate($request, array(
             'title' => 'required|max:255',
-            'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
+            'slug' => 'required|alpha_dash|min:5|max:255|blog_posts,slug',
             //alpha_dash: alpha-numeric characters, as well as dashes and underscores
             //go to the slug column in posts table and see if this item is unique
             'body' => 'required',
@@ -150,7 +150,7 @@ class PostController extends Controller
 
         $this->validate($request, array(
             'title' => 'required|max:255',
-            'slug' => "required|alpha_dash|min:5|max:255|unique:posts,slug,$id",
+            'slug' => "required|alpha_dash|min:5|max:255|unique:blog_posts,slug,$id",
             'body' => 'required',
             'featured_image' => 'sometimes|image'
             ));
